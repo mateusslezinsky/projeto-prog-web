@@ -70,6 +70,9 @@ div.post p.summary{
 form.login form.register{
   max-width: 400px;
   margin: 0 auto;
+  
+  
+  
 }
 
 input{
@@ -80,7 +83,9 @@ input{
   border: 2px solid #ddd;
   background-color: #fff;
   border-radius: 5px;
-   
+  
+  
+  
 }
 button{
   width: 100%;
@@ -90,8 +95,10 @@ button{
   color: #fff;
   border-radius: 5px;
   padding: 7px 0;
+  
 }
 
 form h1{
   text-align: center;
+  
 }

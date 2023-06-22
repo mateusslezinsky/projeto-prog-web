@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function RegisterPage() {
+    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     async function register(ev) {
@@ -18,6 +19,10 @@ export default function RegisterPage() {
                 placeholder="username"
                 value={username}
                 onChange={ev => setUsername(ev.target.value)} />
+            <input type="text"
+                placeholder="email"
+                value={email}
+                onChange={ev => setEmail(ev.target.value)} />
             <input type="password"
                 placeholder="password"
                 value={password}
