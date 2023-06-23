@@ -1,33 +1,56 @@
-import {useState} from "react";
+import { useState, useContext, useEffect } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebase.utils";
+import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  async function register(ev) {
-    ev.preventDefault();
-    const response = await fetch('http://localhost:4000/register', {
-      method: 'POST',
-      body: JSON.stringify({username,password}),
-      headers: {'Content-Type':'application/json'},
-    });
-    if (response.status === 200) {
-      alert('registration successful');
-    } else {
-      alert('registration failed');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUserInfo } = useContext(UserContext);
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      setUserInfo({
+        email: user.email,
+        uid: user.uid,
+      });
+      navigate("/");
+    } catch (err) {
+      if (err.code === "auth/weak-password") {
+        setError("Digite uma senha que possua pelo menos 6 caracteres");
+      } else if (err.code === "auth/email-already-in-use") {
+        setError("Esse e-mail já está em uso! Escolha outro...");
+      }
     }
-  }
+  };
+
   return (
-    <form className="register" onSubmit={register}>
+    <form className="register" onSubmit={onSubmit}>
       <h1>Register</h1>
-      <input type="text"
-             placeholder="username"
-             value={username}
-             onChange={ev => setUsername(ev.target.value)}/>
-      <input type="password"
-             placeholder="password"
-             value={password}
-             onChange={ev => setPassword(ev.target.value)}/>
+      <input
+        type="email"
+        placeholder="Digite seu e-mail..."
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Digite sua senha..."
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <button>Register</button>
+      {error ? <div className="error">{error}</div> : <></>}
     </form>
   );
 }
