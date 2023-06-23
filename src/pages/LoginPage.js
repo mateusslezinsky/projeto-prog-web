@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
-import { auth } from "../firebase/firebase.utils";
+import { auth, db } from "../firebase/firebase.utils";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,11 +17,19 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      setUserInfo({
-        email: user.email,
-        uid: user.uid,
-      });
-      navigate("/");
+
+      const docSnapshot = await getDoc(doc(db, "users", user.uid));
+      if (docSnapshot.exists()) {
+        const { name } = docSnapshot.data();
+        setUserInfo({
+          email: user.email,
+          uid: user.uid,
+          name,
+        });
+        navigate("/");
+      } else {
+        setError("Usuário não encontrado!");
+      }
     } catch (err) {
       if (err.code === "auth/user-not-found") {
         setError("Usuário não encontrado!");
@@ -40,12 +49,14 @@ export default function LoginPage() {
         placeholder="Digite seu e-mail..."
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
       <input
         type="password"
         placeholder="Digite sua senha..."
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
       <button>Login</button>
       {error ? <div className="error">{error}</div> : <></>}
