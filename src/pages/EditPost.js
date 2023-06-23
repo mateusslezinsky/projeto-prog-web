@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Editor from "./Editor";
+
+import { collection, doc, updateDoc, getDoc } from "firebase/firestore";
+import { db, storage } from "../firebase/firebase.utils";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function EditPost() {
   const { id } = useParams();
@@ -8,30 +12,42 @@ export default function EditPost() {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
-  const [redirect, setRedirect] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    (async () => {
+      const docSnap = await getDoc(doc(db, "posts", id));
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        console.log(data);
+        setTitle(data.title);
+        setSummary(data.summary);
+        setContent(data.content);
+        setFiles(data.imageURL);
+      } else {
+        console.log("Não encontrado!");
+      }
+    })();
+  }, []);
 
   async function updatePost(ev) {
     ev.preventDefault();
-    const data = new FormData();
-    data.set("title", title);
-    data.set("summary", summary);
-    data.set("content", content);
-    data.set("id", id);
-    if (files?.[0]) {
-      data.set("file", files?.[0]);
-    }
-    const response = await fetch("http://localhost:4000/post", {
-      method: "PUT",
-      body: data,
-      credentials: "include",
+    const docRef = doc(collection(db, "posts"));
+    const imageRef = ref(storage, `images/${docRef.id}`);
+    await uploadBytes(imageRef, files[0], {
+      contentType: "image/jpeg",
     });
-    if (response.ok) {
-      setRedirect(true);
-    }
-  }
+    const URL = await getDownloadURL(ref(storage, `images/${docRef.id}`));
 
-  if (redirect) {
-    return <Navigate to={"/post/" + id} />;
+    await updateDoc(doc(db, "posts", id), {
+      title,
+      summary,
+      content,
+      imageURL: URL,
+    });
+    navigate("/");
   }
 
   return (
