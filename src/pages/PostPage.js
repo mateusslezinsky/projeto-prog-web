@@ -32,9 +32,10 @@ export default function EditPost() {
                             <p>
                                 Publicado em&nbsp;
                                 <b>{format(postData.createdAt.seconds * 1000, "dd/MM/yyyy HH:mm")}</b>
-                                &nbsp;por <b>augustotsilva{postData.creator}</b>
+                                &nbsp;por <b>criador{postData.creator}</b>
                             </p>
                         </div>
+                        <hr></hr>
                         <div dangerouslySetInnerHTML={{__html: postData.content}}></div>
                         <img className={"img-conteudo"} src={postData.imageURL}/>
 

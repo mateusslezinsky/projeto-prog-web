@@ -27,7 +27,9 @@ export default function Post({
           <a className="author"><b>criador</b></a>
           <time>em <b>{format(createdAt.seconds * 1000, "dd/MM/yyyy HH:mm")}</b></time>
         </p>
-        <p className="summary">{summary}</p>
+        <div className={"summary-principal"}>
+            <p className="summary">{summary}</p>
+        </div>
       </div>
     </div>
   );
