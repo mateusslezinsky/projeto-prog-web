@@ -1,64 +1,58 @@
 import {useEffect, useState} from "react";
-import {Navigate, useParams} from "react-router-dom";
-import Editor from "./Editor"
+import {Link, Navigate, useParams} from "react-router-dom";
+import Editor from "./Editor";
+
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../firebase/firebase.utils";
+import {format} from "date-fns";
 
 export default function EditPost() {
-  const {id} = useParams();
-  const [title,setTitle] = useState('');
-  const [summary,setSummary] = useState('');
-  const [content,setContent] = useState('');
-  const [files, setFiles] = useState('');
-  const [redirect,setRedirect] = useState(false);
+    const {id} = useParams();
+    const [postData, setPostData] = useState(null);
 
-  useEffect(() => {
-    fetch('http://localhost:4000/post/'+id)
-      .then(response => {
-        response.json().then(postInfo => {
-          setTitle(postInfo.title);
-          setContent(postInfo.content);
-          setSummary(postInfo.summary);
-        });
-      });
-  }, []);
+    useEffect(() => {
+        (async () => {
+            const docSnap = await getDoc(doc(db, "posts", id));
+            if (docSnap.exists()) {
+                setPostData(docSnap.data());
+            } else {
+                console.log("Não encontrado!");
+            }
+        })();
+    }, []);
 
-  async function updatePost(ev) {
-    ev.preventDefault();
-    const data = new FormData();
-    data.set('title', title);
-    data.set('summary', summary);
-    data.set('content', content);
-    data.set('id', id);
-    if (files?.[0]) {
-      data.set('file', files?.[0]);
-    }
-    const response = await fetch('http://localhost:4000/post', {
-      method: 'PUT',
-      body: data,
-      credentials: 'include',
-    });
-    if (response.ok) {
-      setRedirect(true);
-    }
-  }
-
-  if (redirect) {
-    return <Navigate to={'/post/'+id} />
-  }
-
-  return (
-    <form onSubmit={updatePost}>
-      <input type="title"
-             placeholder={'Title'}
-             value={title}
-             onChange={ev => setTitle(ev.target.value)} />
-      <input type="summary"
-             placeholder={'Summary'}
-             value={summary}
-             onChange={ev => setSummary(ev.target.value)} />
-      <input type="file"
-             onChange={ev => setFiles(ev.target.files)} />
-      <Editor onChange={setContent} value={content} />
-      <button style={{marginTop:'5px'}}>Update post</button>
-    </form>
-  );
+    return (
+        <>
+            {postData ? (
+                <>
+                    <div className={"card-conteudo"}>
+                        <div><h1>{postData.title}</h1></div>
+                        <div><h4>{postData.summary}</h4></div>
+                        <div>
+                            <p>
+                                Publicado em&nbsp;
+                                <b>{format(postData.createdAt.seconds * 1000, "dd/MM/yyyy HH:mm")}</b>
+                                &nbsp;por <b>criador{postData.creator}</b>
+                            </p>
+                        </div>
+                        <hr></hr>
+                        <div dangerouslySetInnerHTML={{__html: postData.content}}></div>
+                        <div className={"image-div"}>
+                            <img className={"img-conteudo"} src={postData.imageURL}/>
+                        </div>
+                    </div>
+                    <div className={"actions"}>
+                        <Link className={"action update"} to={`/edit/${id}`}>
+                            Atualizar notícia
+                        </Link>
+                        <Link className={"action delete"} to={`/edit/${id}`}>
+                            Excluir notícia
+                        </Link>
+                    </div>
+                </>
+            ) : (
+                <></>
+            )}
+        </>
+    );
 }

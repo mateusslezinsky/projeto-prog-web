@@ -1,20 +1,36 @@
-import Post from "../Post";
-import {useEffect, useState} from "react";
+import Post from "../components/Post";
+import { useEffect, useState } from "react";
+
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebase.utils";
 
 export default function IndexPage() {
-  const [posts,setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
-      response.json().then(posts => {
-        setPosts(posts);
-      });
-    });
+    (async () => {
+      try {
+        const appendArr = [];
+        const querySnapshot = await getDocs(collection(db, "posts"));
+        querySnapshot.forEach((doc) => {
+          appendArr.push(doc.data());
+        });
+        setPosts(appendArr);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
   }, []);
+
   return (
     <>
-      {posts.length > 0 && posts.map(post => (
-        <Post {...post} />
-      ))}
+      {posts.length > 0 &&
+        posts.map((post) => {
+          return (
+            <div key={post._id}>
+              <Post {...post} />
+            </div>
+          );
+        })}
     </>
   );
 }
