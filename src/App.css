@@ -135,7 +135,6 @@ button {
 }
 .actions {
     display: inline-block;
-    align-items: center;
 }
 
 form.login h1,
@@ -229,9 +228,10 @@ a svg {
 }
 
 .image-div {
-    overflow: hidden;
-    display: inline;
-    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    object-fit: scale-down;
 }
 
 .img-principal {
@@ -243,9 +243,11 @@ a svg {
 
 .img-conteudo {
     border-radius: 20px;
-    max-height: 400px;
-    width: 900px;
-    object-fit: cover;
+    max-height: 800px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .summary-principal {

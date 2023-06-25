@@ -37,16 +37,17 @@ export default function EditPost() {
                         </div>
                         <hr></hr>
                         <div dangerouslySetInnerHTML={{__html: postData.content}}></div>
-                        <img className={"img-conteudo"} src={postData.imageURL}/>
-
-                        <div className={"actions"}>
-                            <Link className={"action update"} to={`/edit/${id}`}>
-                                Atualizar notícia
-                            </Link>
-                            <Link className={"action delete"} to={`/edit/${id}`}>
-                                Excluir notícia
-                            </Link>
+                        <div className={"image-div"}>
+                            <img className={"img-conteudo"} src={postData.imageURL}/>
                         </div>
+                    </div>
+                    <div className={"actions"}>
+                        <Link className={"action update"} to={`/edit/${id}`}>
+                            Atualizar notícia
+                        </Link>
+                        <Link className={"action delete"} to={`/edit/${id}`}>
+                            Excluir notícia
+                        </Link>
                     </div>
                 </>
             ) : (
