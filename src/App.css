@@ -50,6 +50,11 @@ header nav {
     gap: 24px;
 }
 
+.header {
+    position: sticky;
+    top: 0;
+}
+
 div.post {
     display: grid;
     grid-template-columns: 1fr;
@@ -127,12 +132,15 @@ button {
     padding: 7px;
     margin: 5px;
 }
+
 .update {
     background-color: #0E8388;
 }
+
 .delete {
     background-color: #880E0E;
 }
+
 .actions {
     display: inline-block;
 }
