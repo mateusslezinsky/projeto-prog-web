@@ -82,6 +82,21 @@ export default function EditPost() {
                     <div className={"card-conteudo"}>
                         <h3>Comentários</h3>
                         <hr></hr>
+                        <form>
+                            <div className={"comment"}>
+                                <div className={"comment-input"}>
+                                    <input
+                                        type="text"
+                                        placeholder="Deixe seu comentário..."
+                                        required
+                                    />
+                                </div>
+                                <div className={"comment-button"}>
+                                    <button>Comentar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <hr></hr>
                         <br></br>
                         {comments.length === 0 ? (
                             <p>Não há comentários!</p>
