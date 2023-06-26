@@ -14,9 +14,6 @@ img {
     max-width: 100%;
 }
 
-main {
-}
-
 .outlet {
     padding: 10px;
     max-width: 960px;
@@ -26,11 +23,11 @@ main {
 header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     padding: 20px;
     align-items: center;
     color: antiquewhite;
-    background-color: #2C3333;
+    background-color: #2c3333;
 }
 
 header a {
@@ -116,7 +113,7 @@ button {
     cursor: pointer;
     width: 100%;
     display: block;
-    background-color: #0E8388;
+    background-color: #0e8388;
     border: 0;
     color: #fff;
     border-radius: 5px;
@@ -131,14 +128,15 @@ button {
     border-radius: 5px;
     padding: 7px;
     margin: 5px;
+    text-decoration: none;
 }
 
 .update {
-    background-color: #0E8388;
+    background-color: #0e8388;
 }
 
 .delete {
-    background-color: #880E0E;
+    background-color: #880e0e;
 }
 
 .actions {
@@ -229,6 +227,7 @@ a svg {
 }
 
 .card-conteudo {
+    margin-top: 20px;
     border-radius: 20px;
     background: #e6e6e6 !important;
     padding: 20px;
@@ -261,4 +260,40 @@ a svg {
 .summary-principal {
     height: 13vh;
     overflow: clip;
+}
+
+.logout {
+    padding: 10px;
+}
+
+.comment {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #ddd;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.comment-button {
+    width: 19%;
+}
+
+.comment-input {
+    width: 80%;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -50px;
+}
+
+@media (max-width: 767px) {
+    .hidden-navbar-item{
+        display:none;
+    }
 }

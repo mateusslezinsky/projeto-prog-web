@@ -24,21 +24,26 @@ export default function Header() {
             <Link to="/" className="logo">
                 Auluma News
             </Link>
-            <nav>
-                {userInfo ? (
-                    <>
-                        <Link to="/create">Criar novo post</Link>
-                        <button onClick={onLogout}>
-                            <a>Logout</a>
-                        </button>
-                    </>
-                ) : (
-                    <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Registrar</Link>
-                    </>
-                )}
-            </nav>
+
+            {userInfo ? (
+                <>
+                    <div>
+                        <nav>
+                            <div className={"center hidden-navbar-item"}>Olá, <b>{userInfo.name}</b></div>
+                            <Link className={"hidden-navbar-item"} to="/create">Criar novo post</Link>
+                            <Link className={"hidden-navbar-item"} to="/user">Minha conta</Link>
+                            <button className="logout" onClick={onLogout}>
+                                Logout
+                            </button>
+                        </nav>
+                    </div>
+                </>
+            ) : (
+                <nav>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Registrar</Link>
+                </nav>
+            )}
         </header>
     );
 }
