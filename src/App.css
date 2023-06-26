@@ -264,3 +264,9 @@ a svg {
 .logout {
   padding: 10px;
 }
+
+.comment {
+  background-color: #ddd;
+  padding: 10px;
+  border-radius: 7px;
+}

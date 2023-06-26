@@ -64,20 +64,22 @@ export default function EditPost() {
   return (
     <form onSubmit={updatePost}>
       <input
-        type="title"
-        placeholder={"Title"}
+        type="text"
+        placeholder="Digite um título..."
         value={title}
         onChange={(ev) => setTitle(ev.target.value)}
+        required
       />
       <input
-        type="summary"
-        placeholder={"Summary"}
+        type="text"
+        placeholder="Digite um lide..."
         value={summary}
         onChange={(ev) => setSummary(ev.target.value)}
+        required
       />
       <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
       <Editor onChange={setContent} value={content} />
-      <button style={{ marginTop: "5px" }}>Update post</button>
+      <button style={{ marginTop: "5px" }}>Atualizar post</button>
     </form>
   );
 }

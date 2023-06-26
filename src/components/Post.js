@@ -1,7 +1,7 @@
-import {format, formatISO9075} from "date-fns";
+import { format, formatISO9075 } from "date-fns";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {formatISO9075WithOptions} from "date-fns/fp";
+import { formatISO9075WithOptions } from "date-fns/fp";
 
 export default function Post({
   _id,
@@ -10,7 +10,7 @@ export default function Post({
   imageURL,
   content,
   createdAt,
-  author,
+  creator,
 }) {
   return (
     <div className="post card-principal">
@@ -24,11 +24,15 @@ export default function Post({
           <h2>{title}</h2>
         </Link>
         <p className="info">
-          <a className="author"><b>criador</b></a>
-          <time>em <b>{format(createdAt.seconds * 1000, "dd/MM/yyyy HH:mm")}</b></time>
+          <a className="author">
+            <b>{creator}</b>
+          </a>
+          <time>
+            em <b>{format(createdAt.seconds * 1000, "dd/MM/yyyy HH:mm")}</b>
+          </time>
         </p>
         <div className={"summary-principal"}>
-            <p className="summary">{summary}</p>
+          <p className="summary">{summary}</p>
         </div>
       </div>
     </div>

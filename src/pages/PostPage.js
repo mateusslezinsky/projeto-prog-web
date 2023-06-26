@@ -7,12 +7,16 @@ import { format } from "date-fns";
 import { UserContext } from "../UserContext";
 import { ref, deleteObject } from "firebase/storage";
 
+import Comment from "../components/Comment";
+
 export default function EditPost() {
   const { id } = useParams();
   const [postData, setPostData] = useState(null);
 
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -28,7 +32,6 @@ export default function EditPost() {
   const removePost = async () => {
     const imageRef = ref(storage, `images/${id}`);
     try {
-      console.log(id);
       deleteObject(imageRef);
       await deleteDoc(doc(db, "posts", id));
       navigate("/");
@@ -57,7 +60,7 @@ export default function EditPost() {
                     "dd/MM/yyyy HH:mm"
                   )}
                 </b>
-                &nbsp;por <b>criador{postData.creator}</b>
+                &nbsp;por <b>{postData.creator}</b>
               </p>
             </div>
             <hr></hr>
@@ -66,7 +69,7 @@ export default function EditPost() {
               <img className={"img-conteudo"} src={postData.imageURL} />
             </div>
           </div>
-          {userInfo && (
+          {userInfo.email === postData.owner && (
             <div className={"actions"}>
               <Link className={"action update"} to={`/edit/${id}`}>
                 Atualizar notícia
@@ -76,6 +79,18 @@ export default function EditPost() {
               </Link>
             </div>
           )}
+          <div>
+            <h3>Comentários</h3>
+            {comments.length === 0 ? (
+              <p>Não há comentários!</p>
+            ) : (
+              comments.map((comment) => (
+                <div key={comment.id}>
+                  <Comment {...comment} />
+                </div>
+              ))
+            )}
+          </div>
         </>
       )}
     </>

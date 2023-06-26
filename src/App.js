@@ -8,6 +8,7 @@ import { UserContextProvider } from "./UserContext";
 import CreatePost from "./pages/CreatePost";
 import PostPage from "./pages/PostPage";
 import EditPost from "./pages/EditPost";
+import UserPage from "./pages/UserPage";
 
 import PrivateRoute from "./utils/PrivateRoute";
 
@@ -25,6 +26,7 @@ function App() {
           <Route element={<PrivateRoute isPrivate={true} />}>
             <Route path="/create" element={<CreatePost />} />
             <Route path="/edit/:id" element={<EditPost />} />
+            <Route path="/user" element={<UserPage />} />
           </Route>
 
           <Route path="/post/:id" element={<PostPage />} />

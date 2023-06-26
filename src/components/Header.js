@@ -30,6 +30,7 @@ export default function Header() {
           <div>Olá, {userInfo.name}</div>
           <nav>
             <Link to="/create">Criar novo post</Link>
+            <Link to="/user">Minha conta</Link>
             <button className="logout" onClick={onLogout}>
               Logout
             </button>

@@ -1,17 +1,20 @@
 import "react-quill/dist/quill.snow.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Editor from "./Editor";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, storage } from "../firebase/firebase.utils";
+import { UserContext } from "../UserContext";
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
+
+  const { userInfo } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -31,6 +34,8 @@ export default function CreatePost() {
       imageURL: URL,
       createdAt: new Date(),
       _id: docRef.id,
+      creator: userInfo.name,
+      owner: userInfo.email,
     });
 
     navigate("/");
@@ -39,15 +44,15 @@ export default function CreatePost() {
   return (
     <form onSubmit={createNewPost}>
       <input
-        type="title"
-        placeholder={"Title"}
+        type="text"
+        placeholder="Digite um título..."
         value={title}
         onChange={(ev) => setTitle(ev.target.value)}
         required
       />
       <input
-        type="summary"
-        placeholder={"Summary"}
+        type="text"
+        placeholder="Digite um lide..."
         value={summary}
         onChange={(ev) => setSummary(ev.target.value)}
         required
@@ -59,7 +64,7 @@ export default function CreatePost() {
         required
       />
       <Editor value={content} onChange={setContent} />
-      <button style={{ marginTop: "5px" }}>Create post</button>
+      <button style={{ marginTop: "5px" }}>Criar post</button>
     </form>
   );
 }
