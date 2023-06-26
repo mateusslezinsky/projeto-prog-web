@@ -64,6 +64,13 @@ div.post {
         grid-template-columns: 0.9fr 1.1fr;
     }
 }
+div.post div.texts {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    max-width: 90%;
+
+}
 
 div.post div.texts h2 {
     margin: 0;
