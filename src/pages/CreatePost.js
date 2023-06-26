@@ -43,17 +43,20 @@ export default function CreatePost() {
         placeholder={"Title"}
         value={title}
         onChange={(ev) => setTitle(ev.target.value)}
+        required
       />
       <input
         type="summary"
         placeholder={"Summary"}
         value={summary}
         onChange={(ev) => setSummary(ev.target.value)}
+        required
       />
       <input
         type="file"
         accept=".png, .jpg, .jpeg"
         onChange={(ev) => setFiles(ev.target.files)}
+        required
       />
       <Editor value={content} onChange={setContent} />
       <button style={{ marginTop: "5px" }}>Create post</button>

@@ -16,12 +16,15 @@ export default function EditPost() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(files);
+  }, [files]);
+
+  useEffect(() => {
     (async () => {
       const docSnap = await getDoc(doc(db, "posts", id));
 
       if (docSnap.exists()) {
         const data = docSnap.data();
-        console.log(data);
         setTitle(data.title);
         setSummary(data.summary);
         setContent(data.content);
@@ -35,18 +38,26 @@ export default function EditPost() {
   async function updatePost(ev) {
     ev.preventDefault();
     const docRef = doc(collection(db, "posts"));
-    const imageRef = ref(storage, `images/${docRef.id}`);
-    await uploadBytes(imageRef, files[0], {
-      contentType: "image/jpeg",
-    });
-    const URL = await getDownloadURL(ref(storage, `images/${docRef.id}`));
-
-    await updateDoc(doc(db, "posts", id), {
-      title,
-      summary,
-      content,
-      imageURL: URL,
-    });
+    if (typeof files === "object") {
+      const imageRef = ref(storage, `images/${docRef.id}`);
+      await uploadBytes(imageRef, files[0], {
+        contentType: "image/jpeg",
+      });
+      const URL = await getDownloadURL(ref(storage, `images/${docRef.id}`));
+      await updateDoc(doc(db, "posts", id), {
+        title,
+        summary,
+        content,
+        imageURL: URL,
+      });
+    } else {
+      await updateDoc(doc(db, "posts", id), {
+        title,
+        summary,
+        content,
+        imageURL: files,
+      });
+    }
     navigate("/");
   }
 
