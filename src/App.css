@@ -227,7 +227,7 @@ a svg {
 }
 
 .card-conteudo {
-    margin-bottom: 20px;
+    margin-top: 20px;
     border-radius: 20px;
     background: #e6e6e6 !important;
     padding: 20px;
@@ -282,4 +282,18 @@ a svg {
 
 .comment-input {
     width: 80%;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -50px;
+}
+
+@media (max-width: 767px) {
+    .hidden-navbar-item{
+        display:none;
+    }
 }
