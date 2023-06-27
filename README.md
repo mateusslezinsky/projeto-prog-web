@@ -14,6 +14,13 @@ Desenvolvedores:
 - rReact-quill: Um editor de texto rico em recursos para React
 - uuidv4: Uma biblioteca para geração de identificadores únicos universais (UUIDs).
 
+### Versão live
+
+https://aluma-news.netlify.app/
+
+### Repositório GitHub
+
+https://github.com/mateusslezinsky/projeto-prog-web.git
 
 ### Pré-requisitos
 
