@@ -6,28 +6,28 @@ import {getDoc, doc, updateDoc} from "firebase/firestore";
 import {useNavigate} from "react-router-dom";
 
 const UserPage = () => {
-    const [name, setName] = useState("");
-    const {userInfo, setUserInfo} = useContext(UserContext);
+    const [name, setName] = useState("");                       // Define o estado para o nome do usuário
+    const {userInfo, setUserInfo} = useContext(UserContext);   // Obtém as informações do usuário do contexto
 
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
-            const docSnap = await getDoc(doc(db, "users", userInfo.uid));
+            const docSnap = await getDoc(doc(db, "users", userInfo.uid));       // Obtém o documento do usuário do Firestore
 
             if (docSnap.exists()) {
-                setName(userInfo.name);
+                setName(userInfo.name);                                      // Define o nome do usuário no estado
             } else {
-                console.log("Não encontrado!");
+                console.log("Não encontrado!");                             // Exibe uma mensagem de "Não encontrado" no console
             }
         })();
     }, []);
 
-    const changeName = async (e) => {
+    const changeName = async (e) => {                                       // Função de callback para alterar o nome do usuário
         e.preventDefault();
-        const document = await updateDoc(doc(db, "users", userInfo.uid), {
+        const document = await updateDoc(doc(db, "users", userInfo.uid), {  // Impede o comportamento padrão de envio do formulário
             name,
-        });
+        });                                                                 // Atualiza o documento do usuário no Firestore com o novo nome
         console.log(document);
         setUserInfo({...userInfo, name});
         navigate("/");
