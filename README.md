@@ -2,6 +2,12 @@
 
 Blog desenvolvido para a disciplina de Programação para Web do curso de Sistemas de Informação
 
+Desenvolvedores:
+Frontend - Lucas Thomé da Silva (22103551)
+Frontend - Augusto ...
+Backend e DataBase - Mateus Zelensky..
+
+
 
 ### Pré-requisitos
 
@@ -25,10 +31,20 @@ Blog desenvolvido para a disciplina de Programação para Web do curso de Sistem
     ```bash
    npm install
 
+## Executando o Projeto
+   
+1. Inicie o servidor de desenvolvimento:
+    ```bash
+   npm start
 
-## Uso
+2. Abra o navegador e acesse http://localhost:3000 para visualizar o blog.
 
-Demonstre como usar o projeto. Você pode fornecer exemplos de código, comandos de linha ou explicações detalhadas de como utilizar as funcionalidades.
+## Recursos de Funcionalidades
+   
+   * Visualização de notícias
+   * Login de usuário
+   * Postagem de novas notícias
+   * Comentários em notícias
 
 ## Contribuição
 
