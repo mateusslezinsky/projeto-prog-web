@@ -11,7 +11,7 @@ Backend e DataBase - Mateus Zelensky..
 
 ### Pré-requisitos
 
-- Node.js instalado (versão 18.16.1)
+- Node.js instalado (versão 18.16.1 ou lts)
 - Git instalado
 
 ## Instalação
@@ -42,19 +42,52 @@ Backend e DataBase - Mateus Zelensky..
 ## Recursos de Funcionalidades
    
    * Visualização de notícias
+   * Cadastro de usuário
    * Login de usuário
    * Postagem de novas notícias
    * Comentários em notícias
 
-## Contribuição
 
-Explique como outras pessoas podem contribuir para o projeto. Você pode incluir orientações sobre envio de problemas, solicitações de recursos ou como iniciar o ambiente de desenvolvimento local.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Licença
 
-Declare a licença sob a qual o projeto é distribuído. Por exemplo, MIT, Apache, etc.
+Todos direitos reservados
 
 ## Contato
 
-Forneça informações de contato, caso alguém queira entrar em contato com você em relação ao projeto.
-
+thome_lucas@live.com
+mateus.sle.per@hotmail.com
+atexeira13@gmail.com
