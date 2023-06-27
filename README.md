@@ -14,7 +14,16 @@ Blog desenvolvido para a disciplina de Programação para Web do curso de Sistem
 1. Clone o repositório do projeto:
 
    ```bash
-   git clone [<url_do_repositório>](https://github.com/mateusslezinsky/projeto-prog-web.git)
+   git clone https://github.com/mateusslezinsky/projeto-prog-web.git
+
+2. Navegue até o diretório do projeto:
+
+   ```bash
+   cd projeto-prog-web
+
+3. Instale as dependências do projeto:
+    ```bash
+   npm install
 
 
 ## Uso
