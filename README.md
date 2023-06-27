@@ -7,6 +7,12 @@ Desenvolvedores:
 - Frontend - Augusto Teixeira da Silva (22102556)
 - Backend e DataBase - Mateus Slezinsky Pereira (21200422)
 
+### Tecnlogias Utilizadas
+- React: Uma biblioteca JavaScript para a construção de interfaces de usuário.
+- React Router DOM: Uma biblioteca para o roteamento e navegação em uma aplicação React.
+- Firebase: Autenticação de usuários, armazenamento de dados em tempo real e hospedagem de arquivos.
+- rReact-quill: Um editor de texto rico em recursos para React
+- uuidv4: Uma biblioteca para geração de identificadores únicos universais (UUIDs).
 
 
 ### Pré-requisitos
