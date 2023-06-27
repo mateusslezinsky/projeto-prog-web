@@ -73,10 +73,14 @@ div.post div.texts {
   overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
-  max-width: 90%;
+  width: 100%;
   display: flex; /* Usar flexbox para organizar os elementos */
   flex-direction: column; /* Organizar em coluna */
   gap: 10px; /* Adicionar espaçamento entre os elementos */
+  text-align: justify;
+  margin: auto;
+  justify-content: flex-start;
+  max-height: 26vh;
 }
 
 div.post div.texts h2 {
@@ -243,7 +247,6 @@ a svg {
   background: #e6e6e6 !important;
   padding: 20px;
   box-shadow: 0 0 0 0, 0 0 5px #ffffff;
-  height: 30vh;
 }
 
 .card-conteudo {
@@ -286,7 +289,7 @@ a svg {
   padding: 10px;
 }
 
-.comment {
+.comment-section {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -296,6 +299,11 @@ a svg {
   border-radius: 7px;
 }
 
+.comment {
+  padding: 1px 15px;
+  background-color: #eeeeee !important;
+}
+
 .comment-button {
   width: 19%;
 }
@@ -303,6 +311,12 @@ a svg {
 .comment-input {
   width: 80%;
 }
+
+.titulo{
+  font-size: xx-large;
+  font-weight: bold;
+}
+
 
 /* A PARTIR DE ISSO AQUI É PRA RESPONSIVIDADE DO HEADER E DO MENU OCULTO MOBILE */
 ul {
@@ -316,6 +330,10 @@ ul {
 ul li {
   padding: 5px;
   margin-left: 10px;
+}
+
+button {
+  font-size: medium;
 }
 
 ul li:hover {
@@ -398,7 +416,12 @@ ul li:hover {
     display: block;
   }
 
-  
+  .card-principal {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
 
-
+  .titulo {
+    font-size: x-large;
+  }
 }
