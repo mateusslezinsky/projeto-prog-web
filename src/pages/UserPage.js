@@ -37,7 +37,7 @@ const UserPage = () => {
             <h1>Alterar nome de usuário</h1>
 
             <form onSubmit={changeName}>
-                <div className={"comment"}>
+                <div className={"comment-section"}>
                     <div className={"comment-input"}>
                         <input
                             type="text"
