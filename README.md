@@ -4,8 +4,8 @@ Blog desenvolvido para a disciplina de Programação para Web do curso de Sistem
 
 Desenvolvedores:
 - Frontend - Lucas Thomé da Silva (22103551)
-- Frontend - Augusto ...
-- Backend e DataBase - Mateus Zelensky..
+- Frontend - Augusto Teixeira da Silva (22102556)
+- Backend e DataBase - Mateus Slezinsky Pereira (21200422)
 
 
 
