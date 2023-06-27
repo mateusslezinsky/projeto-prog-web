@@ -1,4 +1,35 @@
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius elit non sapien imperdiet accumsan. Cras nec dolor mi. Sed ac auctor tortor, at aliquet tortor. Ut lobortis sed dui at ultricies. Duis sodales tempor dolor at vestibulum. Donec vel sapien accumsan tortor ornare vestibulum non eu massa. Maecenas hendrerit tincidunt arcu ut volutpat. Mauris elit turpis, tristique ut mollis in, tincidunt sed massa. Phasellus vestibulum dui eu dui interdum, nec malesuada arcu pulvinar. Praesent sed egestas quam. Vivamus risus metus, porttitor ac tempus ut, ornare at diam. Cras vestibulum iaculis tincidunt. Maecenas varius, libero id faucibus tempus, mauris ante congue ipsum, id ultrices eros ipsum quis mauris. Ut accumsan a lectus ac pretium. Mauris vitae vehicula magna, eget semper neque. Fusce feugiat sed magna quis hendrerit.
+# ALUMA NEWS
 
-paleta
-https://colorhunt.co/palette/2c33332e4f4f0e8388cbe4de
+Blog desenvolvido para a disciplina de Programação para Web do curso de Sistemas de Informação
+
+
+### Pré-requisitos
+
+- Node.js instalado (versão 18.16.1)
+- Git instalado
+
+## Instalação
+
+
+1. Clone o repositório do projeto:
+
+   ```bash
+   git clone <url_do_repositório>
+
+
+## Uso
+
+Demonstre como usar o projeto. Você pode fornecer exemplos de código, comandos de linha ou explicações detalhadas de como utilizar as funcionalidades.
+
+## Contribuição
+
+Explique como outras pessoas podem contribuir para o projeto. Você pode incluir orientações sobre envio de problemas, solicitações de recursos ou como iniciar o ambiente de desenvolvimento local.
+
+## Licença
+
+Declare a licença sob a qual o projeto é distribuído. Por exemplo, MIT, Apache, etc.
+
+## Contato
+
+Forneça informações de contato, caso alguém queira entrar em contato com você em relação ao projeto.
+
