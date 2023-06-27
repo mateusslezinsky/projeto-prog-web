@@ -27,7 +27,7 @@ const LeaveComment = ({ id, postData, setPostData }) => {
   const [commentInput, setCommentInput] = useState("");
   return (
     <form onSubmit={leaveComment}>
-      <div className={"comment"}>
+      <div className={"comment-section"}>
         <div className={"comment-input"}>
           <input
             type="text"
