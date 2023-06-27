@@ -3,9 +3,9 @@
 Blog desenvolvido para a disciplina de Programação para Web do curso de Sistemas de Informação
 
 Desenvolvedores:
-Frontend - Lucas Thomé da Silva (22103551)
-Frontend - Augusto ...
-Backend e DataBase - Mateus Zelensky..
+*Frontend - Lucas Thomé da Silva (22103551)
+*Frontend - Augusto ...
+*Backend e DataBase - Mateus Zelensky..
 
 
 
@@ -88,6 +88,6 @@ Todos direitos reservados
 
 ## Contato
 
-thome_lucas@live.com
-mateus.sle.per@hotmail.com
-atexeira13@gmail.com
+*thome_lucas@live.com
+*mateus.sle.per@hotmail.com
+*atexeira13@gmail.com
