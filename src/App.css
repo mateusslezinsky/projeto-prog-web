@@ -290,13 +290,14 @@ a svg {
 }
 
 .comment-section {
-  display: flex;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
   background-color: #ddd;
   padding: 10px;
   border-radius: 7px;
+  display: inline-flex;
+  flex-wrap: nowrap;
 }
 
 .comment {
@@ -305,11 +306,17 @@ a svg {
 }
 
 .comment-button {
-  width: 19%;
+  width: fit-content;
+  padding: 10px;
+}
+
+.comment-button button {
+  width: fit-content;
+  padding: 10px;
 }
 
 .comment-input {
-  width: 80%;
+  width: 100%;
 }
 
 .titulo{
