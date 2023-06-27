@@ -14,7 +14,7 @@ Blog desenvolvido para a disciplina de Programação para Web do curso de Sistem
 1. Clone o repositório do projeto:
 
    ```bash
-   git clone https://github.com/mateusslezinsky/projeto-prog-web.git
+   git clone [<url_do_repositório>](https://github.com/mateusslezinsky/projeto-prog-web.git)
 
 
 ## Uso
