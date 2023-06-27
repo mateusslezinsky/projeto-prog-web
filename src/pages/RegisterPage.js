@@ -14,26 +14,27 @@ export default function RegisterPage() {
 
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e) => {                                   // Função de callback para o envio do formulário
     e.preventDefault();
     try {
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
         password
-      );
+      );                                                              // Cria um novo usuário no Firebase Authentication
+
       await setDoc(doc(db, "users", user.uid), {
         email,
         name,
-      });
+      });                                                            // Cria um novo documento de usuário no Firestore          
 
       setUserInfo({
         email: user.email,
         uid: user.uid,
-        name,
+        name,                                                       // Define as informações do usuário no estado global
       });
-      localStorage.setItem("userInfo", userInfo);
-      navigate("/");
+      localStorage.setItem("userInfo", userInfo);                   // Armazena as informações do usuário no localStorage
+      navigate("/");                                                // Navega para a página inicial
     } catch (err) {
       console.error(err);
       if (err.code === "auth/weak-password") {

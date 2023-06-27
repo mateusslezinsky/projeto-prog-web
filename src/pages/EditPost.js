@@ -7,6 +7,7 @@ import { db, storage } from "../firebase/firebase.utils";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function EditPost() {
+  // Cria um estado para o ID,  título, summary, content e files
   const { id } = useParams();
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -17,9 +18,13 @@ export default function EditPost() {
 
   useEffect(() => {
     console.log(files);
+    // Função assíncrona que busca os dados do post pelo ID e preenche os campos do formulário com os valores encontrados
+      
   }, [files]);
 
   useEffect(() => {
+  // Função assíncrona que busca os dados do post pelo ID e preenche os campos do formulário com os valores encontrados
+
     (async () => {
       const docSnap = await getDoc(doc(db, "posts", id));
 
@@ -37,14 +42,15 @@ export default function EditPost() {
 
   async function updatePost(ev) {
     ev.preventDefault();
-    const docRef = doc(collection(db, "posts"));
+    const docRef = doc(collection(db, "posts"));              // Referência a uma nova coleção "posts" no banco de dados
     if (typeof files === "object") {
-      const imageRef = ref(storage, `images/${docRef.id}`);
+      const imageRef = ref(storage, `images/${docRef.id}`);  // Referência a uma nova imagem no armazenamento
       await uploadBytes(imageRef, files[0], {
         contentType: "image/jpeg",
       });
       const URL = await getDownloadURL(ref(storage, `images/${docRef.id}`));
       await updateDoc(doc(db, "posts", id), {
+        // Atualiza o documento do post com os novos valores
         title,
         summary,
         content,
@@ -52,13 +58,15 @@ export default function EditPost() {
       });
     } else {
       await updateDoc(doc(db, "posts", id), {
+        // Atualiza o documento do post com os novos valores
+
         title,
         summary,
         content,
         imageURL: files,
       });
     }
-    navigate("/");
+    navigate("/");        // Navega de volta para a página inicial após a atualização do post
   }
 
   return (

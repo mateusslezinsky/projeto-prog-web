@@ -12,16 +12,16 @@ import LeaveComment from "../components/LeaveComment";
 import PostManagement from "../components/PostManagement";
 
 export default function EditPost() {
-  const { id } = useParams();
-  const [postData, setPostData] = useState(null);
+  const { id } = useParams();                                  // Obtém o ID do post dos parâmetros da URL
+  const [postData, setPostData] = useState(null);             // Define o estado para os dados do post
 
-  const { userInfo } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);             // Obtém as informações do usuário do contexto
 
   useEffect(() => {
     (async () => {
-      const docSnap = await getDoc(doc(db, "posts", id));
+      const docSnap = await getDoc(doc(db, "posts", id));   // Obtém o documento do post no banco de dados
       if (docSnap.exists()) {
-        setPostData(docSnap.data());
+        setPostData(docSnap.data());                       // Define os dados do post no estado
       } else {
         console.log("Não encontrado!");
       }
@@ -73,8 +73,8 @@ export default function EditPost() {
               </>
             ) : (
               <></>
-            )}
-            <Comment postData={postData} />
+            )}        
+            <Comment postData={postData} />          
           </div>
         </>
       )}
