@@ -109,7 +109,7 @@ div.post p.info a.author {
 }
 
 div.post p.summary {
-  margin: 10px 0;
+  margin: AUTO;
   line-height: 1.8rem;
 }
 
@@ -397,16 +397,8 @@ ul li:hover {
   .hamburger-icon {
     display: block;
   }
-  div.post {
-    display: flex;
-    flex-direction: column;
-  }
 
-  div.post div.texts {
-    order: 2;
-  }
+  
 
-  div.post div.image {
-    order: 1;
-  }
+
 }
