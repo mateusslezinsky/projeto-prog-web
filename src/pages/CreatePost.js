@@ -36,6 +36,7 @@ export default function CreatePost() {
       _id: docRef.id,
       creator: userInfo.name,
       owner: userInfo.email,
+      comments: [],
     });
 
     navigate("/");
